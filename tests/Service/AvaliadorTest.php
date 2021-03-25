@@ -81,4 +81,27 @@ class AvaliadorTest extends TestCase
 
         $this->assertEquals(2000, $menorValor);
     }
+
+    public function testAvaliadorDeveBuscar3MaioresValores()
+    {
+        $leilao = new Leilao('Fiat 147 0KM');
+        $joao = new Usuario('João');
+        $maria = new Usuario('Maria');
+        $moquidesia = new Usuario('Moquidésia');
+        $irineu = new Usuario('Irineu');
+
+        $leilao->recebeLance(new Lance($moquidesia, 1500));
+        $leilao->recebeLance(new Lance($joao, 1000));
+        $leilao->recebeLance(new Lance($maria, 2000));
+        $leilao->recebeLance(new Lance($irineu, 1700));
+
+        $leiloeiro = new Avaliador();
+        $leiloeiro->avalia($leilao);
+
+        $maiores = $leiloeiro->getMaioresLances();
+        $this->assertCount(3, $maiores);
+        $this->assertEquals(2000, $maiores[0]->getValor());
+        $this->assertEquals(1700, $maiores[1]->getValor());
+        $this->assertEquals(1500, $maiores[2]->getValor());
+    }
 }
