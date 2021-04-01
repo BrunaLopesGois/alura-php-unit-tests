@@ -12,4 +12,6 @@ Avaliador (Alura\Leilao\Tests\Service\Avaliador)
  [x] Avaliador deve encontrar o menor valor de lances with data set "Ordem decrescente"
  [x] Avaliador deve encontrar o menor valor de lances with data set "Ordem aleatoria"
  [x] Avaliador deve buscar 3 maiores valores
+ [x] Leilao vazio nao pode ser avaliado
+ [x] Leilao finalizado nao pode ser finalizado
 
